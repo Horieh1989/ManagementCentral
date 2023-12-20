@@ -9,22 +9,25 @@ namespace ManagementCentral.Client.Pages
     {
         [Inject]
         public IDeviceDataService DeviceDataService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         [parameter]
 
         public string DeviceId { get; set; }
-        public Device Device { get; set; }
+        public Device Device { get; set; }=new Device();
 
         protected override void OnInitialized()
         {
-
-            Device = DeviceDataService.GetDevice(int.Parse(  DeviceId));
+           
+            Device = DeviceDataService.GetDevice( int.Parse( DeviceId));
 
 
         }
         protected void Delet (string DeviceId)
         {
             DeviceDataService.DeleteDevice(int.Parse(DeviceId));//why we dont use directly instead of delet ,deletdevice
+            NavigationManager.NavigateTo($"deviceLst");
         }
 
 

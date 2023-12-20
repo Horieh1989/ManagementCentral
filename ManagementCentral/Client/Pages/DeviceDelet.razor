@@ -1,5 +1,6 @@
-﻿@page "/DeviceDelet/{DeviceId}"
-<h3>DeviceDelet</h3>
+﻿@page "/devicedelet/{DeviceId:int}"
+
+<h3>Delete Device</h3>
 
 <table class="table">
     <thead>
@@ -9,27 +10,17 @@
             <th scope="col">Date</th>
             <th scope="col">Type</th>
             <th scope="col">Status</th>
-           
         </tr>
     </thead>
     <tbody>
-
-        {
         <tr>
-
-            <td scope="row">@Device.DeviceId </td>
+            <td scope="row">@Device.DeviceId</td>
             <td scope="row">@Device.Location</td>
-            <td scope="row">@Device.Date.ToString("yyyy-mm-dd") </td>
-            <td scope="row">@Device.DeviceType </td>
-            <td scope="row">@Device.Status </td>
-            
+            <td scope="row">@Device.Date.ToString("yyyy-MM-dd")</td>
+            <td scope="row">@Device.DeviceType</td>
+            <td scope="row">@Device.Status</td>
         </tr>
-
-        }
     </tbody>
-
-
-
 </table>
-<a href="@($"DeviceList")class=" btn btn-outline-primary"> Go back to the main List </a>
-<a class=" btn btn-outline-primary" @onclick="()=>Delet(DeviceId)"> Delet </a>
+<a href="@($"ListOfDevices")" class="btn btn-outline-primary">Back to Device list</a>
+<a class="btn btn-outline-primary" @onclick="() => Delet(DeviceId)">Delete</a>
