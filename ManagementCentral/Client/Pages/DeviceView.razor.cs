@@ -1,6 +1,7 @@
 ﻿using ManagementCentral.Client.services;
 using Microsoft.AspNetCore.Components;
 using ManagementCentral.Shared.Domain;
+using ManagementCentral.Client.component;
 
 namespace ManagementCentral.Client.Pages
 {
@@ -10,13 +11,13 @@ namespace ManagementCentral.Client.Pages
         public IDeviceDataService DeviceDataService { get; set; }
 
         [Parameter]
-        public string DeviceId { get; set; }
+        public int DeviceId { get; set; }
         public Device Device { get; set; }=new Device();
 
        protected override void OnInitialized()
         {
 
-            Device = DeviceDataService.GetDevice(int.Parse(DeviceId));
+            Device = DeviceDataService.GetDevice(DeviceId);
             base.OnInitialized();
 
         }

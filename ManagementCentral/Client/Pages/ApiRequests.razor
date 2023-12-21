@@ -1,0 +1,23 @@
+﻿@page "/ApiRequest"
+@inject HttpClient Http
+
+
+<h3>ApiRequests</h3>
+<h5> Device From API: @deviceFromApi</h5>
+<button class=" btn btn-primary" @onclick="GetDeviceFromApi"> Get Device From Api</button>
+
+@code {
+
+   private string deviceFromApi= string.Empty;
+
+    protected async Task  GetDeviceFromApi()
+    {
+
+        var response = await Http.GetAsync("/Device");
+        if(response.IsSuccessStatusCode)
+        {
+            deviceFromApi = await response.Content.ReadAsStringAsync();
+        }
+    }
+
+}
